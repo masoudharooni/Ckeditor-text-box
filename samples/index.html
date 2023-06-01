@@ -6,27 +6,70 @@
     <script src="../ckeditor.js"></script>
     <script src="js/sample.js"></script>
     <link rel="stylesheet" href="css/samples.css" />
+    <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
       content="Try the latest sample of CKEditor 4 and learn more about customizing your WYSIWYG editor with endless possibilities."
     />
+    <style>
+      body {
+        font-family: SGkara;
+      }
+      .container {
+        /* background-color: yellow; */
+        margin-top: 40px;
+      }
+      .copy-btn {
+        width: 100%;
+        background-color: #67b930;
+        color: white;
+        padding: 5px 20px;
+        font-size: 17px;
+        margin-top: 10px;
+        font-family: SGkaraBold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background-color: #58a724;
+      }
+      .copy-btn:focus {
+        background-color: #4a9519;
+      }
+    </style>
   </head>
   <body id="main">
     <main>
       <div class="adjoined-bottom">
         <div class="grid-container">
-          <div class="grid-width-100">
+          <div class="grid-width-100 container">
             <div id="editor">
               <h1>سلام این یک عنوان تستی است!</h1>
             </div>
+            <button id="copy-btn" class="copy-btn">کپی داخل کلیپبرد</button>
           </div>
         </div>
       </div>
     </main>
     <script>
+      const copyContent = async (text) => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (err) {
+          console.error("Failed to copy: ", err);
+        }
+      };
       initSample();
+      const copyBtn = document.getElementById("copy-btn");
+      copyBtn.addEventListener("click", () => {
+        const editorData = CKEDITOR.instances.editor.getData();
+        copyContent(editorData);
+        alert("کد مستند شما کپی شد");
+      });
+      console.log("Data: ", editorData);
     </script>
   </body>
 </html>

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: SGkara;
+  src: url(../fonts/SGKara-Regular.ttf);
+}
+@font-face {
+  font-family: SGkaraBold;
+  src: url(../fonts/SGKara-SemiBold.ttf);
+}
+@font-face {
+  font-family: SGkaraLight;
+  src: url(../fonts/SGKara-Light.ttf);
+}
